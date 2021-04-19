@@ -39,12 +39,11 @@ namespace MathExpressionParser.Tests
         [TestCase("6%4", new string[] { "6", "4", "%" })]
         [TestCase("6.5+3,5", new string[] { "6.5", "3.5", "+" })]
         [TestCase("6,5+3.5", new string[] { "6.5", "3.5", "+" })]
-        public void ConvertFromInfixToPostfixNotation(string expression, string[] expectedPostfix)
+        public void ConvertFromInfixToPostfixNotation(string expression, string[] expected)
         {
-            string[] infix = proc.ValidateAndSplitExpression(expression);
-            string[] calculatedPostfix = proc.ConvertFromInfixToPostfixNotation(infix);
+            string[] actual = proc.ConvertExpressionToPostfixNotation(expression);
 
-            Assert.AreEqual(expectedPostfix, calculatedPostfix);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestCase("1+2*(3+2)", 11)]
@@ -70,9 +69,9 @@ namespace MathExpressionParser.Tests
         [TestCase("6,5+3.5", 10)]
         public void CalculateValues(string expression, double expected)
         {
-            double calculated = Math.Round(proc.Calculate(expression), 2);
+            double actual = Math.Round(proc.Calculate(expression), 2);
 
-            Assert.AreEqual(expected, calculated);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestCase("((-5)")]

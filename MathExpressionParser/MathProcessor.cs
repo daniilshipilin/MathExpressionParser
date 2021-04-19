@@ -17,8 +17,7 @@ namespace MathExpressionParser
         /// </summary>
         public double Calculate(string expression)
         {
-            string[] infix = ValidateAndSplitExpression(expression);
-            string[] postfix = ConvertFromInfixToPostfixNotation(infix);
+            string[] postfix = ConvertExpressionToPostfixNotation(expression);
             double result = EvaluatePostfixNotation(postfix);
 
             return result;
@@ -27,8 +26,10 @@ namespace MathExpressionParser
         /// <summary>
         /// Returns string array in reverse polish notation (RPN) form.
         /// </summary>
-        public string[] ConvertFromInfixToPostfixNotation(string[] infix)
+        public string[] ConvertExpressionToPostfixNotation(string expression)
         {
+            string[] infix = ValidateAndSplitExpression(expression);
+
             // empty stack for operators
             var stack = new Stack<string>();
 
@@ -113,7 +114,7 @@ namespace MathExpressionParser
         /// <summary>
         /// Validates input expression and then splits it in individual elements.
         /// </summary>
-        public string[] ValidateAndSplitExpression(string expression)
+        private string[] ValidateAndSplitExpression(string expression)
         {
             // remove whitespace chars first, and replace ',' chars with '.'
             string exp = expression.Replace(" ", string.Empty).Replace(",", ".");
