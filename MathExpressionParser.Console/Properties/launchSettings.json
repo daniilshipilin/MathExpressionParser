@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "MathExpressionParser.Console": {
+      "commandName": "Project"
+    }
+  }
+}
