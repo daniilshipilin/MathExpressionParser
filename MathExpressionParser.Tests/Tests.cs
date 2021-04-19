@@ -8,13 +8,6 @@ namespace MathExpressionParser.Tests
     [TestFixture]
     public class Tests
     {
-        private readonly MathProcessor proc;
-
-        public Tests()
-        {
-            proc = new MathProcessor();
-        }
-
         [SetUp]
         public void Setup()
         {
@@ -41,7 +34,7 @@ namespace MathExpressionParser.Tests
         [TestCase("6,5+3.5", new string[] { "6.5", "3.5", "+" })]
         public void ConvertFromInfixToPostfixNotation(string expression, string[] expected)
         {
-            string[] actual = proc.ConvertExpressionToPostfixNotation(expression);
+            string[] actual = MathProcessor.ConvertExpressionToPostfixNotation(expression);
 
             Assert.AreEqual(expected, actual);
         }
@@ -69,7 +62,7 @@ namespace MathExpressionParser.Tests
         [TestCase("6,5+3.5", 10)]
         public void CalculateValues(string expression, double expected)
         {
-            double actual = Math.Round(proc.Calculate(expression), 2);
+            double actual = Math.Round(MathProcessor.Calculate(expression), 2);
 
             Assert.AreEqual(expected, actual);
         }
@@ -84,19 +77,19 @@ namespace MathExpressionParser.Tests
         [TestCase(")(")]
         public void MismatchedParenthesisException(string expression)
         {
-            Assert.Throws<ExpressionMismatchedParenthesisException>(() => proc.Calculate(expression));
+            Assert.Throws<ExpressionMismatchedParenthesisException>(() => MathProcessor.Calculate(expression));
         }
 
         [Test]
         public void DivideByZeroException()
         {
-            Assert.Throws<DivideByZeroException>(() => proc.Calculate("1/0"));
+            Assert.Throws<DivideByZeroException>(() => MathProcessor.Calculate("1/0"));
         }
 
         [Test]
         public void ModuloBehaviourUndefinedException()
         {
-            Assert.Throws<ModuloBehaviourUndefinedException>(() => proc.Calculate("6%0"));
+            Assert.Throws<ModuloBehaviourUndefinedException>(() => MathProcessor.Calculate("6%0"));
         }
 
         [TestCase("5-9#7")]
@@ -105,7 +98,7 @@ namespace MathExpressionParser.Tests
         [TestCase("5-9!7")]
         public void ExpressionInvalidCharsException(string expression)
         {
-            Assert.Throws<ExpressionInvalidCharsException>(() => proc.Calculate(expression));
+            Assert.Throws<ExpressionInvalidCharsException>(() => MathProcessor.Calculate(expression));
         }
 
         [TestCase("5+)4-2(")]
@@ -118,7 +111,7 @@ namespace MathExpressionParser.Tests
         [TestCase("5+(4-2")]
         public void ExpressionMismatchedParenthesisException(string expression)
         {
-            Assert.Throws<ExpressionMismatchedParenthesisException>(() => proc.Calculate(expression));
+            Assert.Throws<ExpressionMismatchedParenthesisException>(() => MathProcessor.Calculate(expression));
         }
     }
 }

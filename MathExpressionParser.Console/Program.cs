@@ -19,8 +19,7 @@ namespace MathExpressionParser.Console
                     return;
                 }
 
-                var proc = new MathProcessor();
-                double result = proc.Calculate(input);
+                double result = MathProcessor.Calculate(input);
                 Console.WriteLine($"Expression result: {result}");
             }
             catch (Exception ex)

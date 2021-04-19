@@ -10,12 +10,12 @@ namespace MathExpressionParser
     /// <summary>
     /// <see cref="MathProcessor"/> class.
     /// </summary>
-    public class MathProcessor
+    public static class MathProcessor
     {
         /// <summary>
         /// Returns computed expression result.
         /// </summary>
-        public double Calculate(string expression)
+        public static double Calculate(string expression)
         {
             string[] postfix = ConvertExpressionToPostfixNotation(expression);
             double result = EvaluatePostfixNotation(postfix);
@@ -26,7 +26,7 @@ namespace MathExpressionParser
         /// <summary>
         /// Returns string array in reverse polish notation (RPN) form.
         /// </summary>
-        public string[] ConvertExpressionToPostfixNotation(string expression)
+        public static string[] ConvertExpressionToPostfixNotation(string expression)
         {
             string[] infix = ValidateAndSplitExpression(expression);
 
@@ -114,7 +114,7 @@ namespace MathExpressionParser
         /// <summary>
         /// Validates input expression and then splits it in individual elements.
         /// </summary>
-        private string[] ValidateAndSplitExpression(string expression)
+        private static string[] ValidateAndSplitExpression(string expression)
         {
             // remove whitespace chars first, and replace ',' chars with '.'
             string exp = expression.Replace(" ", string.Empty).Replace(",", ".");
@@ -142,7 +142,7 @@ namespace MathExpressionParser
             return list.ToArray();
         }
 
-        private double EvaluatePostfixNotation(string[] postfix)
+        private static double EvaluatePostfixNotation(string[] postfix)
         {
             // empty stack for storing results
             var stack = new Stack<double>();
@@ -181,7 +181,7 @@ namespace MathExpressionParser
             return stack.Pop();
         }
 
-        private double DoMath(double operator1, double operator2, string operation)
+        private static double DoMath(double operator1, double operator2, string operation)
         {
             if (operation == Operators.Power)
             {
