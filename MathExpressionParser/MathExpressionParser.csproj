@@ -4,6 +4,20 @@
         <TargetFramework>net5.0</TargetFramework>
         <Nullable>enable</Nullable>
         <LangVersion>latest</LangVersion>
+        <AssemblyName>MathExpressionParser</AssemblyName>
+        <RootNamespace>MathExpressionParser</RootNamespace>
+        <ApplicationIcon>Images\maths.ico</ApplicationIcon>
+        <Authors>Daniil Shipilin</Authors>
+        <Description>Math Expression Parser library.</Description>
+        <Copyright>Daniil Shipilin</Copyright>
+        <Company>Illuminati Software Inc.</Company>
+        <PackageId>MathExpressionParser</PackageId>
+        <Version>1.0.0</Version>
+        <Product>Math Expression Parser library.</Product>
+        <RepositoryUrl>https://github.com/daniilshipilin/MathExpressionParser</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/daniilshipilin/MathExpressionParser</PackageProjectUrl>
+        <PackageIcon>maths.png</PackageIcon>
+        <NeutralLanguage>en</NeutralLanguage>
     </PropertyGroup>
 
     <ItemGroup>
@@ -11,6 +25,13 @@
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="Images\maths.png">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
     </ItemGroup>
 
 </Project>
