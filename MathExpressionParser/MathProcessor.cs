@@ -79,7 +79,7 @@ namespace MathExpressionParser
                     {
                         while (stack.Count != 0 && Operators.PrecedenceDict[infix[i]] <= Operators.PrecedenceDict[stack.Peek()])
                         {
-                            if (stack.Peek() == Operators.LeftParenthesis || stack.Peek() == Operators.RightParenthesis)
+                            if (stack.Peek() is Operators.LeftParenthesis or Operators.RightParenthesis)
                             {
                                 break;
                             }
@@ -100,7 +100,7 @@ namespace MathExpressionParser
             // when the infix expression is finished, we start popping off the stack and appending to RPN string till stack becomes empty
             while (stack.Count > 0)
             {
-                if (stack.Peek() == Operators.LeftParenthesis || stack.Peek() == Operators.RightParenthesis)
+                if (stack.Peek() is Operators.LeftParenthesis or Operators.RightParenthesis)
                 {
                     throw new ExpressionMismatchedParenthesisException();
                 }
@@ -221,30 +221,6 @@ namespace MathExpressionParser
             {
                 throw new UnknownOperatorException();
             }
-        }
-
-        private struct Operators
-        {
-            public const string Subtraction = "-";
-            public const string Addition = "+";
-            public const string Division = "/";
-            public const string Multiplication = "*";
-            public const string Power = "^";
-            public const string LeftParenthesis = "(";
-            public const string RightParenthesis = ")";
-            public const string Modulo = "%";
-            public static readonly char[] ValidChars = "0123456789+-)(*^/%.".ToCharArray();
-            public static readonly Dictionary<string, int> PrecedenceDict = new Dictionary<string, int>()
-            {
-                { LeftParenthesis, 10 },
-                { RightParenthesis, 10 },
-                { Power, 5 },
-                { Multiplication, 5 },
-                { Division, 5 },
-                { Modulo, 5 },
-                { Subtraction, 1 },
-                { Addition, 1 },
-            };
         }
     }
 }
