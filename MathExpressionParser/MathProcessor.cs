@@ -15,10 +15,10 @@ namespace MathExpressionParser
         /// <summary>
         /// Returns computed expression result.
         /// </summary>
-        public static double Calculate(string expression)
+        public static decimal Calculate(string expression)
         {
             string[] postfix = ConvertExpressionToPostfixNotation(expression);
-            double result = EvaluatePostfixNotation(postfix);
+            decimal result = EvaluatePostfixNotation(postfix);
 
             return result;
         }
@@ -142,25 +142,25 @@ namespace MathExpressionParser
             return list.ToArray();
         }
 
-        private static double EvaluatePostfixNotation(string[] postfix)
+        private static decimal EvaluatePostfixNotation(string[] postfix)
         {
             // empty stack for storing results
-            var stack = new Stack<double>();
+            var stack = new Stack<decimal>();
 
             for (int i = 0; i < postfix.Length; i++)
             {
                 if (Operators.PrecedenceDict.ContainsKey(postfix[i]))
                 {
                     // an operator: get operand from stack and calculate the result
-                    double operator2 = stack.Pop();
-                    double operator1 = 0;
+                    decimal operator2 = stack.Pop();
+                    decimal operator1 = 0;
 
                     if (stack.Count > 0)
                     {
                         operator1 = stack.Pop();
                     }
 
-                    double result = DoMath(operator1, operator2, postfix[i]);
+                    decimal result = DoMath(operator1, operator2, postfix[i]);
 
                     // push the result into the stack
                     stack.Push(result);
@@ -168,7 +168,7 @@ namespace MathExpressionParser
                 else
                 {
                     // an operand: stack its numerical representation into stack
-                    stack.Push(double.Parse(postfix[i], CultureInfo.InvariantCulture));
+                    stack.Push(decimal.Parse(postfix[i], CultureInfo.InvariantCulture));
                 }
             }
 
@@ -181,11 +181,11 @@ namespace MathExpressionParser
             return stack.Pop();
         }
 
-        private static double DoMath(double operator1, double operator2, string operation)
+        private static decimal DoMath(decimal operator1, decimal operator2, string operation)
         {
             if (operation == Operators.Power)
             {
-                return Math.Pow(operator1, operator2);
+                return (decimal)Math.Pow((double)operator1, (double)operator2);
             }
             else if (operation == Operators.Multiplication)
             {

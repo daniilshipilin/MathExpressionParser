@@ -19,7 +19,7 @@ namespace MathExpressionParser.Console
                     return;
                 }
 
-                double result = MathProcessor.Calculate(input);
+                decimal result = MathProcessor.Calculate(input);
                 Console.WriteLine($"Expression result: {result}");
             }
             catch (Exception ex)
