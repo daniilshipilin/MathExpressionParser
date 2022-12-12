@@ -1,3 +1,3 @@
 # MathExpressionParser
 
-### Author: Daniil Shipilin
+Math Parser Library.
