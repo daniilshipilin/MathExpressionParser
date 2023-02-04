@@ -1,12 +1,11 @@
-namespace MathExpressionParser.Exceptions
-{
-    using System;
+namespace MathExpressionParser.Exceptions;
 
-    public class UnknownOperatorException : Exception
+using System;
+
+public class UnknownOperatorException : Exception
+{
+    public UnknownOperatorException()
+        : base("Unknown operator detected")
     {
-        public UnknownOperatorException()
-            : base("Unknown operator detected")
-        {
-        }
     }
 }

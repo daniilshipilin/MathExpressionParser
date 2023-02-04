@@ -1,12 +1,11 @@
-namespace MathExpressionParser.Exceptions
-{
-    using System;
+namespace MathExpressionParser.Exceptions;
 
-    public class ModuloBehaviourUndefinedException : Exception
+using System;
+
+public class ModuloBehaviourUndefinedException : Exception
+{
+    public ModuloBehaviourUndefinedException()
+        : base("a mod 0 is undefined")
     {
-        public ModuloBehaviourUndefinedException()
-            : base("a mod 0 is undefined")
-        {
-        }
     }
 }

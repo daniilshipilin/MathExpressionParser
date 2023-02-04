@@ -1,12 +1,11 @@
-namespace MathExpressionParser.Exceptions
-{
-    using System;
+namespace MathExpressionParser.Exceptions;
 
-    public class ExpressionMismatchedParenthesisException : Exception
+using System;
+
+public class ExpressionMismatchedParenthesisException : Exception
+{
+    public ExpressionMismatchedParenthesisException()
+        : base("Mismatched parenthesis detected")
     {
-        public ExpressionMismatchedParenthesisException()
-            : base("Mismatched parenthesis detected")
-        {
-        }
     }
 }
