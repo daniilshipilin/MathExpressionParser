@@ -1,12 +1,11 @@
-namespace MathExpressionParser.Exceptions
-{
-    using System;
+namespace MathExpressionParser.Exceptions;
 
-    public class StackElementMismatchException : Exception
+using System;
+
+public class StackElementMismatchException : Exception
+{
+    public StackElementMismatchException()
+        : base("Stack should only have one value")
     {
-        public StackElementMismatchException()
-            : base("Stack should only have one value")
-        {
-        }
     }
 }

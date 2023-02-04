@@ -1,12 +1,11 @@
-namespace MathExpressionParser.Exceptions
-{
-    using System;
+namespace MathExpressionParser.Exceptions;
 
-    public class ExpressionInvalidCharsException : Exception
+using System;
+
+public class ExpressionInvalidCharsException : Exception
+{
+    public ExpressionInvalidCharsException()
+        : base("Invalid char(s) detected")
     {
-        public ExpressionInvalidCharsException()
-            : base("Invalid char(s) detected")
-        {
-        }
     }
 }
