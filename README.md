@@ -1,3 +1,4 @@
+![maths.ico](./MathExpressionParser/Images/maths.ico)
 # MathExpressionParser
 
-Math Parser Library.
+Math Expression Parser Library.
